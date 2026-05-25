@@ -1,7 +1,7 @@
 # deploy-gate-agent
 
 A change/deploy-gate agent built with
-[BurrMCP](https://github.com/msradam/burrmcp): a deployment workflow defined as
+[Theodosia](https://github.com/msradam/theodosia): a deployment workflow defined as
 a [Burr](https://burr.dagworks.io/) state machine and served as an
 [MCP](https://modelcontextprotocol.io/) server. An LLM walks the change one
 enforced transition at a time, and every step is recorded to an audit trail.
@@ -49,7 +49,7 @@ with the refused `resolve` in red:
 ## Using another MCP server
 
 `run_checks` confirms the change is documented by reading `CHANGELOG.md` from a
-separate filesystem MCP server. The action body calls it through BurrMCP's
+separate filesystem MCP server. The action body calls it through Theodosia's
 `call_upstream`, wired in `cli.py`:
 
 ```python
@@ -127,6 +127,6 @@ uv run deploy-gate-agent ui              # open Burr's web UI to replay it
 
 ## License
 
-Apache 2.0. Built on [BurrMCP](https://github.com/msradam/burrmcp),
+Apache 2.0. Built on [Theodosia](https://github.com/msradam/theodosia),
 [Apache Burr](https://github.com/apache/burr), and
 [FastMCP](https://github.com/jlowin/fastmcp).

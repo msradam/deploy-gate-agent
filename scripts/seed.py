@@ -12,7 +12,7 @@ import asyncio
 
 from fastmcp import Client
 
-from burrmcp import ServingMode, mount
+from theodosia import ServingMode, mount
 from deploy_gate_agent.app import build_application
 
 

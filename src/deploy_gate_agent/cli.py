@@ -1,8 +1,8 @@
-"""The `deploy-gate-agent` command, built on burrmcp's build_cli."""
+"""The `deploy-gate-agent` command, built on theodosia's build_cli."""
 
 from __future__ import annotations
 
-from burrmcp.cli import build_cli, run
+from theodosia.cli import build_cli, run
 
 from deploy_gate_agent.app import build_application
 

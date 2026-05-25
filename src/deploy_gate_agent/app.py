@@ -22,9 +22,9 @@ from __future__ import annotations
 
 from burr.core import ApplicationBuilder, State, action
 from burr.core.action import Condition
-from burr.tracking.client import LocalTrackingClient
+from theodosia import tracker
 
-from burrmcp import call_upstream
+from theodosia import call_upstream
 
 
 @action(reads=[], writes=["stage", "service", "summary"])
@@ -134,7 +134,7 @@ def build_application():
             ("verify", "resolve", verified),
             ("verify", "rollback", verified),
         )
-        .with_tracker(LocalTrackingClient(project="deploy-gate-agent"))
+        .with_tracker(tracker(project="deploy-gate-agent"))
         .with_state(stage="new")
         .with_entrypoint("open_change")
         .build()
