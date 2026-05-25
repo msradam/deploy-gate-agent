@@ -1,0 +1,14 @@
+# Default model is Gemini (a free key works). To drive it with a Together
+# model instead, set GENERIC_API_KEY and pass
+# --model generic.meta-llama/Llama-3.3-70B-Instruct-Turbo. For a local model,
+# point the generic base_url at Ollama (http://localhost:11434/v1).
+default_model: gemini-2.5-flash
+
+generic:
+  base_url: https://api.together.xyz/v1
+
+mcp:
+  servers:
+    deploy-gate-agent:
+      command: uv
+      args: ["run", "deploy-gate-agent", "serve"]

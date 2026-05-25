@@ -34,10 +34,17 @@ enforced for you:
 The runbook is the graph, and the server holds the line, rather than the model
 being asked to remember it.
 
-![deploy-gate-agent](demos/deploy-gate-agent.gif)
+An LLM drives the whole change over MCP. Here fast-agent connects a
+Llama-3.3-70B model (on Together) and the model walks open, checks, approve,
+deploy, verify, resolve, one enforced step at a time:
 
-`deploy-gate-agent render` prints that graph; `deploy-gate-agent sessions show`
-replays a recorded change, with the refused `resolve` in red.
+![deploy-gate-agent driven by an LLM](demos/deploy-gate-agent-agent.gif)
+
+The same workflow is observable from the terminal. `deploy-gate-agent render`
+prints the graph; `deploy-gate-agent sessions show` replays a recorded change,
+with the refused `resolve` in red:
+
+![deploy-gate-agent observability](demos/deploy-gate-agent.gif)
 
 ## Using another MCP server
 
@@ -89,11 +96,15 @@ server refuse.
 
 ### fast-agent (terminal REPL)
 
+The repo ships a `fastagent.config.yaml` defining this server, so:
+
 ```bash
-uvx fast-agent-mcp go --model sonnet --servers deploy-gate-agent
+uvx fast-agent-mcp go --servers deploy-gate-agent -m "Ship v2.4.0 of checkout-api. Follow the change process; health check passes."
 ```
 
-Use `--model generic.qwen2.5` to drive it with a local Ollama model.
+It uses Gemini by default (set `GOOGLE_API_KEY`). To drive it with a Together
+model instead, set `GENERIC_API_KEY` and add
+`--model generic.meta-llama/Llama-3.3-70B-Instruct-Turbo`.
 
 ### MCPJam (one npx command, browser playground, free models)
 

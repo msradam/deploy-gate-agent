@@ -8,3 +8,7 @@ uv.lock
 
 # VHS screenshot frames (regenerable)
 demos/*.png
+
+# fast-agent runtime artifacts
+.fast-agent/
+fastagent.jsonl
