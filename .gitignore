@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+dist/
+build/
+.burr/
+uv.lock
+
+# VHS screenshot frames (regenerable)
+demos/*.png

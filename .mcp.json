@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "deploy-gate-agent": {
+      "command": "uv",
+      "args": ["run", "deploy-gate-agent", "serve"]
+    }
+  }
+}
