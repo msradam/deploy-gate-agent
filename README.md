@@ -125,6 +125,20 @@ uv run deploy-gate-agent watch           # live-tail an in-flight change
 uv run deploy-gate-agent ui              # open Burr's web UI to replay it
 ```
 
+Every gate decision (each step and each refusal) is also hash-chained into a
+tamper-evident ledger, written as `ledger.jsonl` next to the session's tracker
+log. To check that a recorded change was not altered after the fact:
+
+```bash
+uv run deploy-gate-agent verify          # most recent session
+uv run deploy-gate-agent verify <app-id> # a specific session
+```
+
+It recomputes the chain and exits nonzero if any record was edited, reordered,
+or deleted, naming the exact line where the chain broke. The chain proves the
+audit trail's integrity, not its confidentiality: it shows the records have not
+been tampered with, it does not encrypt them.
+
 ## License
 
 Apache 2.0. Built on [Theodosia](https://github.com/msradam/theodosia),

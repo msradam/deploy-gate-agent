@@ -16,6 +16,8 @@ Two kinds of gate, both demonstrated:
 
 Every transition is recorded to Burr's tracker, so the change has an audit
 trail: who approved, what was deployed, whether it verified, and how it ended.
+Theodosia also hash-chains each step and refusal into a tamper-evident ledger
+next to the tracker log, checkable with ``deploy-gate-agent verify``.
 """
 
 from __future__ import annotations
